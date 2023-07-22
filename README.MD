@@ -22,14 +22,6 @@ Your code has been rated at 4.67/10
 
 ### Dynamic Code Analysis: ###
 
-################################################
-Accuracy on training data = 0.9582417582417583
-Accuracy on test data = 0.9385964912280702
-Sample data = (15.34, 14.26, 102.5, 704.4, 0.1073, 0.2135, 0.2077, 0.09756, 0.2521, 0.07032, 0.4388, 0.7096, 3.384, 44.91, 0.006789, 0.05328, 0.06446, 0.02252, 0.03672, 0.004394, 18.07, 19.08, 125.1, 980.9, 0.139, 0.5954, 0.6305, 0.2393, 0.4667, 0.09946)
-C:\Users\charl\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\base.py:439: UserWarning: X does not have valid feature names, but LogisticRegression was fitted with feature names
-  warnings.warn(
-Prediction: The Breast cancer is Malignant
-################################################
 Name      Stmts   Miss  Cover
 -----------------------------
 main.py      30      1    97%
