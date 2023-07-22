@@ -1,7 +1,7 @@
-## MyBreastHealth ##
+## MyBreastHealth 
 hfaieahgiaehaighei
 
-### Static Code Analysis: ###
+### Static Code Analysis:
 
 OUTPUT
 
@@ -20,7 +20,7 @@ Your code has been rated at 4.67/10
 
 [Done] exited with code=0 in 5.782 seconds
 
-### Dynamic Code Analysis: ###
+### Dynamic Code Analysis:
 
 Name      Stmts   Miss  Cover
 -----------------------------
