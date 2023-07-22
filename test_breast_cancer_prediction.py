@@ -1,5 +1,4 @@
 import unittest
-
 import numpy as np
 import pandas as pd
 import sklearn.datasets
@@ -22,25 +21,30 @@ class BreastCancerPredictionTests(unittest.TestCase):
         self.model = LogisticRegression(max_iter=1000)
         self.model.fit(self.X_train, self.Y_train)
 
-    def test_data_preprocessing(self):
+    # Unittest
+    def test_data_preprocessing(self): 
         self.assertEqual(self.data_frame.shape[0], 569)
         self.assertEqual(self.data_frame.shape[1], 31)
 
+    # Unittest
     def test_model_training(self):
         self.assertIsNotNone(self.model)
 
+    # Unittest
     def test_accuracy_on_training_data(self):
         X_train_prediction = self.model.predict(self.X_train)
         training_data_accuracy = accuracy_score(self.Y_train, X_train_prediction)
         self.assertGreaterEqual(training_data_accuracy, 0.0)
         self.assertLessEqual(training_data_accuracy, 1.0)
 
+    # Unittest
     def test_accuracy_on_test_data(self):
         X_test_prediction = self.model.predict(self.X_test)
         test_data_accuracy = accuracy_score(self.Y_test, X_test_prediction)
         self.assertGreaterEqual(test_data_accuracy, 0.0)
         self.assertLessEqual(test_data_accuracy, 1.0)
 
+    # Unittest
     def test_prediction(self):
         input_data = (15.34, 14.26, 102.5, 704.4, 0.1073, 0.2135, 0.2077, 0.09756, 0.2521, 0.07032,
                       0.4388, 0.7096, 3.384, 44.91, 0.006789, 0.05328, 0.06446, 0.02252, 0.03672,
