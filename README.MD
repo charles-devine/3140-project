@@ -34,3 +34,6 @@ TOTAL        30      1    97%
 Ran 0 tests in 0.000s
 
 OK
+```
+
+## Static Code Analysis
