@@ -38,7 +38,7 @@ OK
 
 ## Static Code Analysis
 
-Static code analysis was performed using the 'pylint tool', which checks the code against various coding standards and best practices. Below is the output of running pylint on the script:
+Static code analysis was performed using the `pylint tool`, which checks the code against various coding standards and best practices. Below is the output of running pylint on the script:
 
 ```plaintext
 PS C:\Users\charl\Desktop\3140-project> python -u "c:\Users\charl\Desktop\3140-project\static_code_analysis.py"
