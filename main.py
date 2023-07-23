@@ -1,9 +1,12 @@
+from flask import Flask, render_template, request
 import numpy as np
 import pandas as pd
 import sklearn.datasets
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+
+app = Flask(__name__)
 
 # Load the breast cancer dataset from sklearn
 breast_cancer_dataset = sklearn.datasets.load_breast_cancer()
@@ -19,30 +22,26 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_
 model = LogisticRegression(max_iter=10000)
 model.fit(X_train, Y_train)
 
-X_train_prediction = model.predict(X_train)
-training_data_accuracy = accuracy_score(Y_train, X_train_prediction)
+# Function to make a prediction
+def make_prediction(input_data):
+    # Convert the input string data to a list of floats
+    input_data_as_list = [float(val) for val in input_data.split(",")]
+    input_data_as_numpy_array = np.asarray(input_data_as_list)
+    input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
+    return model.predict(input_data_reshaped)[0]
 
-X_test_prediction = model.predict(X_test)
-test_data_accuracy = accuracy_score(Y_test, X_test_prediction)
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        input_data = request.form['input_data']
+        prediction = make_prediction(input_data)
+        if prediction == 0:
+            result = 'Malignant'
+        else:
+            result = 'Benign'
+        return render_template('index.html', prediction_result=result)
 
-input_data = (15.34, 14.26, 102.5, 704.4, 0.1073, 0.2135, 0.2077, 0.09756, 0.2521, 0.07032,
-              0.4388, 0.7096, 3.384, 44.91, 0.006789, 0.05328, 0.06446, 0.02252, 0.03672,
-              0.004394, 18.07, 19.08, 125.1, 980.9, 0.139, 0.5954, 0.6305, 0.2393, 0.4667, 0.09946)
+    return render_template('index.html')
 
-input_data_as_numpy_array = np.asarray(input_data)
-input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
-
-# Print the results
-print('################################################')
-print('Accuracy on training data =', training_data_accuracy)
-print('Accuracy on test data =', test_data_accuracy)
-print("Sample data =", input_data)
-
-# Make the prediction
-prediction = model.predict(input_data_reshaped)
-if prediction[0] == 0:
-    print('Prediction: The Breast cancer is Malignant')
-else:
-    print('Prediction: The Breast Cancer is Benign')
-
-print('################################################')
+if __name__ == '__main__':
+    app.run(debug=True)

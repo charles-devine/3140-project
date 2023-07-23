@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Prediction</title>
+</head>
+<body>
+    <h1>Breast Cancer Prediction</h1>
+    <form method="post">
+        <label for="input_data">Enter the data separated by commas:</label><br>
+        <input type="text" id="input_data" name="input_data" required><br><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_result %}
+    <h2>Prediction Result:</h2>
+    <p>{{ prediction_result }}</p>
+    {% endif %}
+</body>
+</html>
